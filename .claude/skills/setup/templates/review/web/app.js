@@ -5,6 +5,9 @@
 (function () {
   'use strict';
 
+  const DARK_MODE = true;
+  document.documentElement.classList.toggle('light', !DARK_MODE);
+
   const els = {
     loading: document.getElementById('loading'),
     empty: document.getElementById('empty'),

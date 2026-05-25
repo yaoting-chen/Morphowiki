@@ -7,6 +7,7 @@
   --fg: #e6e8ef;
   --fg-mute: #9aa3b8;
   --accent: #7c9cff;
+  --on-accent: #0b1020;
   --border: #2a3358;
   --again: #b5444c;
   --hard:  #c69443;
@@ -14,6 +15,22 @@
   --easy:  #4b7fb0;
   --radius: 12px;
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+:root.light {
+  --bg: #f5f6fa;
+  --bg-elev: #ffffff;
+  --bg-elev2: #eef0f6;
+  --fg: #1a1f2e;
+  --fg-mute: #5a6478;
+  --accent: #3b5bcc;
+  --on-accent: #ffffff;
+  --border: #d4d8e3;
+  --again: #c75058;
+  --hard:  #d99a3f;
+  --good:  #3f8c5d;
+  --easy:  #4d7fb5;
+  --shadow: 0 6px 18px rgba(20, 25, 50, 0.08);
 }
 
 * { box-sizing: border-box; }
@@ -128,7 +145,7 @@ button:disabled {
 
 .primary {
   background: var(--accent);
-  color: #0b1020;
+  color: var(--on-accent);
   font-weight: 600;
   font-size: 16px;
   min-width: 140px;
