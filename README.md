@@ -37,3 +37,10 @@ Inspired by Andrej Karpathy's LLM Wiki — a **private, local-first** English vo
 ```
 
 Requires Node.js ≥ 18 (only used by `/review-word`).
+
+## Q&A
+### Q1: Why does this SM-2 implementation only have 4 buttons?
+
+Although the [original SM-2 algorithm](https://super-memory.com/english/ol/sm2.htm) defined 6 grading options (0–5), according to its Rule 6, **any grade < 3 yields mathematically identical results** (repetition count resets to 0, interval drops to 1 day, and Ease remains unchanged). To reduce user "decision fatigue," we merged these failure states into a single `Again` button.
+
+The system only adjusts the long-term difficulty factor upon a successful recall: `Hard` (-0.14) / `Good` (no change) / `Easy` (+0.10). Most importantly, our `Again` button strictly adheres to the original design of **"never deducting Ease"** (only enforcing the 1.3 floor). This effectively prevents users from plunging cards into an inescapable "Ease Hell" just because of a momentary lapse in concentration.
