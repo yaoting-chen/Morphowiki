@@ -189,7 +189,6 @@ added: 2026-05-21
 - **環境**:Node.js ≥ 18;LLM = Claude(論文使用之模型版本:`<填入模型版本>`)。
 - **狀態可攜**:所有詞庫狀態皆為 `dictionary/` 下的純 Markdown 與 `review/flashcards.json`,完全可版本控制;clone 該 repo 即等於完整重現詞庫狀態。
 - **重現論文範例**:執行 `/setup`,再執行 `/ingest international`,比對產生的 `dictionary/words/{nation,national,international}.md` 與論文 §3.2。
-- **SM-2 排程細節**:公式與邊界情況完整記於 [`docs/sm2-and-scheduling.md`](docs/sm2-and-scheduling.md)。
 
 ## 驗證
 

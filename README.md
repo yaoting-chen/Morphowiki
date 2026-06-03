@@ -191,7 +191,6 @@ The back of a card shows IPA, POS, the Chinese gloss, and the morpheme decomposi
 - **Environment**: Node.js ≥ 18; LLM = Claude (model version used in the paper: `<fill in model version>`).
 - **Portable state**: all lexicon state is plain Markdown under `dictionary/` plus `review/flashcards.json`, fully version-controllable; cloning the repo reproduces the complete lexicon state.
 - **Reproducing the paper's example**: run `/setup`, then `/ingest international`, and compare the generated `dictionary/words/{nation,national,international}.md` against paper §3.2.
-- **SM-2 scheduling details**: formulas and edge cases are fully documented in [`docs/sm2-and-scheduling.md`](docs/sm2-and-scheduling.md).
 
 ## Validation
 
