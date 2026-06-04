@@ -186,7 +186,7 @@ added: 2026-05-21
 ## 可重現性
 
 - **非決定性提醒**:構詞拆解由 LLM 產生,相同輸入在不同模型版本下,詞源敘述可能略有差異;但結構面(frontmatter、section、雙向連結、拆解格式)是決定性的,並由 `/lint` 驗證。
-- **環境**:Node.js ≥ 18;LLM = Claude(論文使用之模型版本:`<填入模型版本>`)。
+- **環境**:Node.js ≥ 18;LLM = Claude(論文使用之模型版本:`Opus 4.7`)。
 - **狀態可攜**:所有詞庫狀態皆為 `dictionary/` 下的純 Markdown 與 `review/flashcards.json`,完全可版本控制;clone 該 repo 即等於完整重現詞庫狀態。
 - **重現論文範例**:執行 `/setup`,再執行 `/ingest international`,比對產生的 `dictionary/words/{nation,national,international}.md` 與論文 §3.2。
 

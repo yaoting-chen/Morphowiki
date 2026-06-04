@@ -188,7 +188,7 @@ The back of a card shows IPA, POS, the Chinese gloss, and the morpheme decomposi
 ## Reproducibility
 
 - **Non-determinism note**: morphological decomposition is produced by an LLM, so for the same input the etymological narrative may vary slightly across model versions; the structural side (frontmatter, sections, bidirectional links, decomposition format) is deterministic and verified by `/lint`.
-- **Environment**: Node.js ≥ 18; LLM = Claude (model version used in the paper: `<fill in model version>`).
+- **Environment**: Node.js ≥ 18; LLM = Claude (model version used in the paper: `Opus 4.7`).
 - **Portable state**: all lexicon state is plain Markdown under `dictionary/` plus `review/flashcards.json`, fully version-controllable; cloning the repo reproduces the complete lexicon state.
 - **Reproducing the paper's example**: run `/setup`, then `/ingest international`, and compare the generated `dictionary/words/{nation,national,international}.md` against paper §3.2.
 
