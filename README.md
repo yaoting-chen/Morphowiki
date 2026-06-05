@@ -10,6 +10,8 @@
 
 Inspired by Andrej Karpathy's LLM Wiki — a **private, local-first** English morphology knowledge base. Each student maintains their own vocabulary and review deck with Claude Code, and all data stays on the local filesystem.
 
+Manual: [manual link](https://morphowiki.pages.dev/?lang=en)
+
 ---
 
 ## Why Morphowiki

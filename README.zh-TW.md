@@ -10,6 +10,8 @@
 
 受 Andrej Karpathy 的 LLM Wiki 啟發,**私有化、本地化**的英文構詞知識庫。每位學生用 Claude Code 維護自己的單字庫與複習庫,所有資料留在本機檔案系統。
 
+手冊: [手冊連結](https://morphowiki.pages.dev/?lang=zh-TW)
+
 ---
 
 ## 為什麼用 Morphowiki
