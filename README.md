@@ -4,9 +4,9 @@
 
 ![morphowiki-overview](https://morphowiki.pages.dev/morphowiki-overview.png)
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20537896.svg)](https://doi.org/10.5281/zenodo.20537896)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/Node.js-%E2%89%A518-43853d.svg?logo=node.js&logoColor=white)](https://nodejs.org/)
-[![Status](https://img.shields.io/badge/status-MVP1-blue.svg)](#)
 
 Inspired by Andrej Karpathy's LLM Wiki — a **private, local-first** English morphology knowledge base. Each student maintains their own vocabulary and review deck with Claude Code, and all data stays on the local filesystem.
 
@@ -23,7 +23,7 @@ The table below compares representative, widely used tools from each category; i
 | Tool                | LLM Integration | Morphological Decomposition | SRS Scheduling | Bidirectional Links | Data Portability | Active Curation |
 | ------------------- | :-------------: | :-------------------------: | :------------: | :-----------------: | :--------------: | :-------------: |
 | Anki                | ✗               | ✗                           | ✓              | ✗                   | ✓ ᵃ              | ✗               |
-| Quizlet             | △               | ✗                           | △              | ✗                   | △                | ✗               |
+| Quizlet             | △               | ✗                           | △ ᶠ              | ✗                   | △                | ✗               |
 | Membean             | ✗               | △ ᵇ                         | △ ᶜ            | ✗                   | ✗                | ✗               |
 | Obsidian + Anki ᵈ   | ✗               | ✗                           | ✓              | ✓                   | ✓                | △               |
 | **Morphowiki**      | **✓**           | **✓**                       | **✓**          | **✓**               | **✓**            | **✓**           |
@@ -32,8 +32,9 @@ The table below compares representative, widely used tools from each category; i
 > **Active curation**: the system separates "automatic verification" from "data writing," changing the lexicon only under explicit user authorization (e.g., `/lint` only flags issues and does not modify files automatically), rather than letting an algorithm or platform decide the learning content on the user's behalf.
 > ᵃ Anki's data portability refers to native plain-text and `.apkg` / `.colpkg` export-then-import, not API-level interoperability.
 > ᵇ "Morphological decomposition" means automatically and recursively decomposing any input word into prefix / root / suffix and generating a navigable morpheme graph; Membean natively offers morpheme-level root instruction and a root tree, but only for words already in its lexicon rather than as a general-purpose decomposer, and is therefore recorded as △.
-> ᶜ Membean provides an adaptive spaced-repetition mechanism.
+> ᶜ Membean natively provides an adaptive spaced-repetition mechanism, but only within its paid subscription tiers; it is therefore recorded as △.
 > ᵈ "+" denotes a workflow combining two tools (not a single product); LLM integration is judged by native core design, and although Obsidian can connect to an LLM via community plugins, it is still recorded as ✗.
+> ᶠ Quizlet's "Learn" mode applies a spaced-repetition-style adaptive schedule, but full scheduling control is restricted to paid tiers; it is therefore recorded as △.
 
 ---
 

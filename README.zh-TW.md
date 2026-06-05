@@ -2,9 +2,11 @@
 
 # Morphowiki
 
+![morphowiki-overview](https://morphowiki.pages.dev/morphowiki-overview.png)
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20537896.svg)](https://doi.org/10.5281/zenodo.20537896)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/Node.js-%E2%89%A518-43853d.svg?logo=node.js&logoColor=white)](https://nodejs.org/)
-[![Status](https://img.shields.io/badge/status-MVP1-blue.svg)](#)
 
 受 Andrej Karpathy 的 LLM Wiki 啟發,**私有化、本地化**的英文構詞知識庫。每位學生用 Claude Code 維護自己的單字庫與複習庫,所有資料留在本機檔案系統。
 
@@ -21,7 +23,7 @@ Morphowiki 把「LLM 遞迴構詞拆解 → Markdown 雙向連結圖譜 → SM-2
 | 工具                | LLM 整合 | 構詞拆解 | SRS 排程 | 雙向連結 | 資料可攜性 | 主動策展 |
 | ------------------- | :------: | :------: | :------: | :------: | :--------: | :------: |
 | Anki                | ✗        | ✗        | ✓        | ✗        | ✓ ᵃ        | ✗        |
-| Quizlet             | △        | ✗        | △        | ✗        | △          | ✗        |
+| Quizlet             | △        | ✗        | △ ᶠ        | ✗        | △          | ✗        |
 | Membean             | ✗        | △ ᵇ      | △ ᶜ      | ✗        | ✗          | ✗        |
 | Obsidian + Anki ᵈ   | ✗        | ✗        | ✓        | ✓        | ✓          | △        |
 | **Morphowiki**      | **✓**    | **✓**    | **✓**    | **✓**    | **✓**      | **✓**    |
@@ -30,8 +32,9 @@ Morphowiki 把「LLM 遞迴構詞拆解 → Markdown 雙向連結圖譜 → SM-2
 > **主動策展**:系統將「自動驗證」與「資料寫入」分離,僅在使用者明確授權下才變更詞庫(如 `/lint` 僅提示、不自動修改),而非由演算法或平台代為決定學習內容。
 > ᵃ Anki 資料可攜性指原生支援純文字與 `.apkg` / `.colpkg` 匯出再匯入,非 API 層級互通。
 > ᵇ 「構詞拆解」指對任意輸入單字自動遞迴拆解為字首 / 字根 / 字尾並生成可導航的語素圖譜;Membean 原生提供 morpheme-level 字根教學與 root tree,但僅限平台內既有詞庫、非通用拆解器,故記 △。
-> ᶜ Membean 具自適應間隔複習機制。
+> ᶜ Membean 原生提供自適應間隔複習機制,但僅限付費訂閱方案,故記 △。
 > ᵈ `+` 表示兩工具搭配使用之工作流(非單一產品);LLM 整合以原生核心設計為準,Obsidian 雖可透過社群外掛接入 LLM,仍記 ✗。
+> ᶠ Quizlet「Learn」模式採用類間隔重複的自適應排程,但完整排程控制僅限付費方案,故記 △。
 
 ---
 
