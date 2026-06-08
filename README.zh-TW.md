@@ -4,13 +4,14 @@
 
 ![morphowiki-overview](https://morphowiki.pages.dev/morphowiki-overview.png)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20537896.svg)](https://doi.org/10.5281/zenodo.20537896)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/Node.js-%E2%89%A518-43853d.svg?logo=node.js&logoColor=white)](https://nodejs.org/)
 
 受 Andrej Karpathy 的 LLM Wiki 啟發,**私有化、本地化**的英文構詞知識庫。每位學生用 Claude Code 維護自己的單字庫與複習庫,所有資料留在本機檔案系統。
 
 手冊: [手冊連結](https://morphowiki.pages.dev/?lang=zh-TW)
+
+DOI: https://doi.org/10.5281/zenodo.20587103
 
 ---
 
@@ -61,10 +62,6 @@ Morphowiki 採三層架構,各層職責清晰、以檔案系統解耦:
 2. **資料層(Data Layer)**:`dictionary/` 底下的 Markdown 單字與語素檔,以雙向 wiki-link 構成語素圖譜。
 3. **複習層(Review Layer)**:Node.js + 原生 JS 的本地 HTTP server(`server.js`,port 5173)、純前端 SPA(`web/`)、SM-2 卡片庫(`review/flashcards.json`)。
 
-![七個指令的工作流](docs/img/workflow.png)
-
-> 七個核心指令的工作流 —— `/setup` 初始化後,主線 `/ingest` → `/flashcard` → `/review-word`,旁支 `/stopword`、`/new-word`、`/lint` 維護詞庫。
-
 ```txt
 morphowiki/
 ├── .claude/skills/             # Generation Layer: 7 Agent Skills
@@ -81,6 +78,10 @@ morphowiki/
     ├── server.js               # Node.js HTTP server (port 5173)
     └── web/                    # SPA frontend (index.html, app.js, style.css)
 ```
+
+> 七個核心指令的工作流 —— `/setup` 初始化後,主線 `/ingest` → `/flashcard` → `/review-word`,旁支 `/stopword`、`/new-word`、`/lint` 維護詞庫。
+
+![七個指令的工作流](docs/img/workflow.png)
 
 ---
 

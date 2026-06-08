@@ -4,13 +4,14 @@
 
 ![morphowiki-overview](https://morphowiki.pages.dev/morphowiki-overview.png)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20537896.svg)](https://doi.org/10.5281/zenodo.20537896)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/Node.js-%E2%89%A518-43853d.svg?logo=node.js&logoColor=white)](https://nodejs.org/)
 
 Inspired by Andrej Karpathy's LLM Wiki — a **private, local-first** English morphology knowledge base. Each student maintains their own vocabulary and review deck with Claude Code, and all data stays on the local filesystem.
 
 Manual: [manual link](https://morphowiki.pages.dev/?lang=en)
+
+DOI: https://doi.org/10.5281/zenodo.20587103
 
 ---
 
@@ -61,10 +62,6 @@ Morphowiki uses a three-layer architecture with clearly separated responsibiliti
 2. **Data Layer**: the Markdown word and morpheme files under `dictionary/`, forming a morpheme graph via bidirectional wiki-links.
 3. **Review Layer**: a Node.js + vanilla-JS local HTTP server (`server.js`, port 5173), a pure-frontend SPA (`web/`), and the SM-2 card store (`review/flashcards.json`).
 
-![Workflow of the seven commands](docs/img/workflow.png)
-
-> Workflow of the seven core commands — after `/setup` initializes, the main line is `/ingest` → `/flashcard` → `/review-word`, with the side branches `/stopword`, `/new-word`, and `/lint` maintaining the lexicon.
-
 ```txt
 morphowiki/
 ├── .claude/skills/             # Generation Layer: 7 Agent Skills
@@ -81,6 +78,10 @@ morphowiki/
     ├── server.js               # Node.js HTTP server (port 5173)
     └── web/                    # SPA frontend (index.html, app.js, style.css)
 ```
+
+> Workflow of the seven core commands — after `/setup` initializes, the main line is `/ingest` → `/flashcard` → `/review-word`, with the side branches `/stopword`, `/new-word`, and `/lint` maintaining the lexicon.
+
+![Workflow of the seven commands](docs/img/workflow.png)
 
 ---
 
