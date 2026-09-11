@@ -1,6 +1,6 @@
 ---
 name: ingest
-description: 分析英文單字並建立雙向關聯的字典頁。觸發時機:使用者輸入「/ingest <word>」、要求 ingest 某個英文單字、或請求把某個英文單字加入字典 / 字根字首字尾庫。對單字進行嚴格詞源學語素拆解、產生 zh-TW 釋義並維護 wiki-link 雙向反向連結。
+description: 分析英文單字並建立雙向關聯的字典頁。支援現代形態派生模式 (Modern Base Stem Mode) 與嚴格古典詞源學模式 (Strict Classical Etymology Mode)。觸發時機:使用者輸入「/ingest <word>」、要求 ingest 某個英文單字、或請求把某個英文單字加入字典 / 字根字首字尾庫。對單字進行語素拆解、產生 zh-TW 釋義並維護 wiki-link 雙向反向連結。
 ---
 
 # Ingest Skill
@@ -66,7 +66,16 @@ description: 分析英文單字並建立雙向關聯的字典頁。觸發時機:
 
 > **批次模式注意**:Step 1b 已做過一次初檢;**每個 token 在進入 Step 4 前還要再做一次本檢查**(可能被前一 token 的遞回 ingest 建檔),已存在 → 靜默跳過(不再問是否覆蓋,直接列入「跳過 已存在」清單)。
 
-## Step 4 — 嚴格詞源學語素拆解
+## Step 4 — 語素拆解與模式選擇
+
+### Step 4 — 模式選擇
+
+支援兩種拆解模式:
+- `/ingest --mode=modern <word>`：現代形態派生模式 (Modern Base Stem Mode)。
+- `/ingest --mode=classical <word>`：嚴格古典詞源學模式 (Strict Classical Etymology Mode)。
+- **未指定 `--mode` 時，預設使用 `classical`（嚴格古典詞源學模式）。**
+
+無論模式為何，所有 prefix、base/root 與 suffix 都必須提供準確的正體中文釋義；詞序必須符合單字由左至右的實際拼寫。
 
 ### Step 4a — Loanword 判定(優先,做拆解前先做)
 
@@ -85,7 +94,25 @@ description: 分析英文單字並建立雙向關聯的字典頁。觸發時機:
 - `happy`:英語原生自由詞素,**有衍生力**(unhappy、happily、happiness、happier) → 正常進 root 池,不算 loanword。
 - `restaurant`:來自法語,但 `-ant` 是活躍 suffix → 拆 `restaur` + `-ant`。
 
-### Step 4b — 一般 morpheme 拆解(僅非 loanword)
+### Step 4b — 現代形態派生模式 (Modern Base Stem Mode)
+
+僅在未判定為 loanword，且使用者指定 `--mode=modern` 時使用。核心原則是以現代英語中可獨立存在的 canonical base word/stem 為核心，不穿透到底層拉丁或希臘詞源。
+
+- 優先使用現代英語可獨立成詞的基底，例如 `decelerative` → `decelerate` + `-ive`、`assailant` → `assail` + `-ant`、`unamiability` → `un-` + `amiable` + `-ity`。
+- 專有名詞及其派生基底保留大小寫，例如 `Copenhagenism` → `Copenhagen` + `-ism`、`Mosleyan` → `Mosley` + `-an`。
+- 使用活躍的現代詞綴，並為每個詞綴提供中文釋義。複合字尾可依現代構詞邊界拆解，例如 `-ization` → `-ize` + `-ation`。
+- 同化前綴使用規範形式：`im-` / `il-` / `ir-` → `in-`；`col-` / `cor-` / `com-` → `con-`；`ef-` → `ex-`，並在釋義中註明表層變體。
+- 若沒有可獨立存在的現代基底，使用 bound root 作為退回方案，例如 `inspect` → `in-` + `spect`；不得再遞迴拆解 bound root。
+
+現代模式的代表結果:
+
+| 單字 | 拆解結果 |
+|---|---|
+| `ability` | base `able`、suffix `-ity` |
+| `irreplaceable` | prefix `in-`(表層作 `ir-`)、prefix `re-`、base `place`、suffix `-able` |
+| `inspect` | prefix `in-`、bound root `spect` |
+
+### Step 4c — 嚴格古典詞源學模式 (Strict Classical Etymology Mode)
 
 **核心原則:遞迴拆解到「無法再分離出有意義的詞源學 morpheme」為止。**「教學字根」(teaching root,如 nation、action、formation)**不算最底層 root**,要繼續拆。
 
